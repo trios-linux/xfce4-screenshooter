@@ -1,0 +1,3 @@
+version=3
+http://archive.xfce.org/src/apps/xfce4-screenshooter/([\d\.]+)/ \
+	xfce4-screenshooter-([\d\.]+)\.tar\.(?:gz|bz2)

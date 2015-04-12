@@ -1,0 +1,2 @@
+# no misc-depends for transitionnal dummy package
+xfce4-screenshooter source: debhelper-but-no-misc-depends xfce4-screenshooter-plugin

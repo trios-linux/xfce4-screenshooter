@@ -1,2 +1,3 @@
-# xfce4-screenshooter
-4.12 build for TRIOS.
+# xfce4-notifyd
+TRIOS build.
+This repo contains only /debian files and a script for downloading the source. Main purpose is usage with Jenkins CI.

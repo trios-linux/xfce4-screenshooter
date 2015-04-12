@@ -1,0 +1,274 @@
+xfce4-screenshooter (1.8.2-1+trios1) mia; urgency=medium
+
+  * Rebuilt against xfce 4.12 for TRIOS.
+
+ -- Filip Danilovic <filip@openmailbox.org>  Sun, 12 Apr 2015 02:22:10 +0200
+
+xfce4-screenshooter (1.8.2-1) experimental; urgency=medium
+
+  * New upstream release.
+    - fix installation path of asturian documentation.          closes: #768787
+  * debian/patches:
+    - 01_fix-plugin-build dropped, included upstream.
+    - git_selection_background_tranparency dropped, included upstream. 
+  * debian/rules:
+    - create m4 folder before calling xdt-autogen. 
+  * debian/control:
+    - don't force automake 1.11 version, but build-depend on a fixed automake
+      version.
+  * debian/rules:
+    - stop requiring 1.11 autotools.
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Fri, 13 Mar 2015 22:06:36 +0100
+
+xfce4-screenshooter (1.8.1-5) unstable; urgency=medium
+
+  * debian/control:
+    - build-depend on automake1.11
+  * debian/rules:
+    - force the use of automake/aclocal 1.11 to workaround a bug in automake
+      1.14 preventing the correct setting of am_aux_dir, which ends up
+      breaking installation of locales.                         closes: #764014
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Sun, 05 Oct 2014 18:16:59 +0200
+
+xfce4-screenshooter (1.8.1-4) unstable; urgency=medium
+
+  [ Jackson Doak ]
+  * Add git_selection_background_tranparency.patch.
+    Make the selection background more transparent. lp:#1204452 closes: #755864
+
+  [ Yves-Alexis Perez ]
+  * debian/control:
+    - update standards version to 3.9.6.
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Fri, 03 Oct 2014 22:11:24 +0200
+
+xfce4-screenshooter (1.8.1-3) unstable; urgency=medium
+
+  [ Evgeni Golov ]
+  * Correct Vcs-* URLs to point to anonscm.debian.org
+
+  [ Yves-Alexis Perez ]
+  * debian/control:
+    - drop libxmlrpc-c3-dev build-dep as it's been replaced by libsoup since
+      1.7.9.                                                    closes: #763387
+    - update standards version to 3.9.5.
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Tue, 30 Sep 2014 21:32:10 +0200
+
+xfce4-screenshooter (1.8.1-2) unstable; urgency=low
+
+  * debian/rules:
+    - enable all hardening flags.
+  * debian/control:
+    - drop version on xfce4-panel-dev build-dep, stable has Xfce 4.8 now.
+    - drop dpkg-dev build-dep, stable has a recent enough dpkg for hardening
+      support.
+    - update standards version to 3.9.4. 
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Sun, 26 May 2013 11:51:41 +0200
+
+xfce4-screenshooter (1.8.1-1) unstable; urgency=low
+
+  [ Lionel Le Folgoc ]
+  * New upstream release.
+  * debian/patches:
+    - 01_fix-crash-with-some-wms.patch: dropped, included upstream.
+    - 01_fix-plugin-build.patch: added, don't build the plugin as a versioned
+      shared lib, and don't export all symbols.
+  * debian/rules:
+    - run xdt-autogen, needed by the patch.
+    - forcefully disable silent rules.
+    - don't install .la files.
+    - fix path to the panel plugin.
+  * debian/control:
+    - add xfce4-dev-tools, autoconf, automake, libtool to b-deps, needed by
+      xdt-autogen.
+    - bumped Standards-Version to 3.9.3.
+
+  [ Yves-Alexis Perez ]
+  * debian/rules:
+    - build with --parallel.
+
+ -- Lionel Le Folgoc <mrpouit@gmail.com>  Mon, 21 May 2012 22:27:47 +0200
+
+xfce4-screenshooter (1.8.0-2) unstable; urgency=low
+
+  [ Lionel Le Folgoc ]
+  * debian/patches:
+    - 01_fix-crash-with-some-wms.patch: added, fix a crash that occurs with some
+      wms, e.g. awesome, when taking a screenshot.  lp: #830920, Closes: #648739
+
+  [ Yves-Alexis Perez ]
+  * debian/rules:
+    - switch to debhelper 9 hardening support.
+    - switch rules do multiarch.
+  * debian/compat bumped to 9.
+  * debian/control:
+    - bump debhelper build-dep to 9 for hardening support.
+    - add dpkg-dev 1.16.1 build-dep for hardening support.
+
+ -- Lionel Le Folgoc <mrpouit@gmail.com>  Mon, 23 Jan 2012 17:00:34 +0100
+
+xfce4-screenshooter (1.8.0-1) unstable; urgency=low
+
+  * New upstream release.
+    - cursor catpure is done using Xfixes.                      closes: #624018
+  * debian/control:
+    - switch libxfcegui4-dev to libxfce4ui-dev.
+    - add build-dep on libexo-1-dev.
+    - drop cdbs build-dep.
+    - update debhelper dependency to 7.0.50~ for overrides.
+  * debian/rules:
+    - switch to dh tiny rules.
+  * debian/docs added.
+  * debian/patches:
+    - 01_fix-implicit-dso-linking dropped, included upstream.
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Mon, 01 Aug 2011 08:05:07 +0200
+
+xfce4-screenshooter (1.7.9-2) unstable; urgency=low
+
+  * debian/control:
+    - add build-dep on libxfcegui4-dev and hardening-includes.
+    - add myself to Uploaders.
+    - remove Simon and Emanuele from uploaders, thanks to them.
+    - update Standards-Version to 3.9.2.
+    - drop unused b-dep on libexo-0.3-dev.
+    - bump xfce4-panel-dev b-dep to (>= 4.8.0) to ensure that it's built
+      against the correct one.                                  Closes: #618274
+  * debian/rules:
+    - pick {C,LD}FLAGS from dpkg-buildflags.
+    - add -O1, -z,defs and --as-needed to LDFLAGS.
+    - add hardening flags to {C,LD}FLAGS.
+  * Switch to 3.0 (quilt) source format.
+  * debian/patches:
+    - 01_fix-implicit-dso-linking.patch: added, fixes FTBFS with binutils-gold.
+    - series: added.                                            closes: #615800
+
+ -- Lionel Le Folgoc <mrpouit@gmail.com>  Wed, 20 Apr 2011 08:13:26 +0200
+
+xfce4-screenshooter (1.7.9-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    - update standards version to 3 8.4.
+    - add build-dep on libsoup2.4-dev.
+  * debian/watch edited to track Xfce archive reorganisation.
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Sun, 07 Feb 2010 16:09:17 +0100
+
+xfce4-screenshooter (1.6.0-1) unstable; urgency=low
+
+  [ Yves-Alexis Perez ]
+  * New upstream release.
+  * debian/control:
+    - update Homepage and long description.                     closes: #527365
+    - switch to xfce section.
+    - add build-dep on libxmlrpc-c3-dev to enable ZimageZ upload interface.
+
+  [ Evgeni Golov ]
+  * Fix Vcs-* fields, they were missing 'trunk' in the path.
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Sun, 14 Jun 2009 20:50:24 +0200
+
+xfce4-screenshooter (1.5.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/copyright:
+    - add licensing informations about the GFDL for documentation stuff.
+  * debian/control:
+    - update standards version to 3.8.1.
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Thu, 02 Apr 2009 22:49:13 +0200
+
+xfce4-screenshooter (1.5.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    - add explicit build-dep on libgtk2.0-dev, intltool.
+    - add a Recommends: ${shlibs:Recommends} to pick xfce4-panel from
+      shlibs.
+    - update build-deps on debhelper to match compat.
+  * Rename package to xfce4-screenshooter:
+    - rename package.
+    - add a transitional dummy package.
+    - update watch file to seek for new name.
+  * debian/copyright:
+    - update copyright holders.
+  * debian/xfce4-screenshooter.install:
+    - add a dummy install file to ship everything.
+  * debian/rules:
+    - don't install xfce4-screenshooter manpage
+    - demote xfce4-panel dep to recommends
+  * debian/compat:
+    - update compat mode to 7.
+  * debian/xfce4-screenshooter.1: removed, included upstream. 
+  * debian/source.lintian-overrides
+    - add a lintian override for not having misc-depends on a dummy pkg.
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Sun, 22 Feb 2009 20:19:01 +0100
+
+xfce4-screenshooter-plugin (1.3.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Tue, 22 Jul 2008 08:22:45 +0200
+
+xfce4-screenshooter-plugin (1.2.0-1) unstable; urgency=low
+
+  [ Enrique Monge ]
+  * New upstream release.
+
+  [ Yves-Alexis Perez ]
+  * debian/control:
+    - update long description.
+    - add homepage header.
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Tue, 01 Jul 2008 08:57:39 +0200
+
+xfce4-screenshooter-plugin (1.1.0-1) unstable; urgency=low
+
+  [ Simon Huggins ]
+  * Add Vcs-* headers to debian/control
+
+  [ Yves-Alexis Perez ]
+  * New upstream release.
+  * debian/control:
+    - update my email address.
+    - remove Rudy Godoy, Martin Loschwitz from Uploaders:.
+    - update standards version to 3.8.0.
+  * debian/patches:
+    - drop 01_filename-generation, merged upstream.
+    - drop 02_dont-save-on-cancel, merged upstream.
+  * debian/xfce4-screenshooter.1 manpage added.
+  * debian/rules:
+    - install xfce4-screenshooter manpage.
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Tue, 17 Jun 2008 20:07:48 +0200
+
+xfce4-screenshooter-plugin (1.0.0-3) unstable; urgency=low
+  
+  (Yves-Alexis Perez)
+  * debian/control: update build-deps to Xfce 4.4.1.
+  * debian/copyright: update copyright holders.
+
+  (Emanuele Rocca)
+  * debian/patches
+    - Fixed filename generation.
+    - Avoid creating screenshots on 'Cancel'.                   closes: #420242
+
+ -- Yves-Alexis Perez <corsac@corsac.net>  Thu, 07 Jun 2007 14:01:10 +0100
+
+xfce4-screenshooter-plugin (1.0.0-2) unstable; urgency=low
+
+  * Updated build-deps to 4.3.90.2 (Xfce 4.4 Beta2). 
+
+ -- Yves-Alexis Perez <corsac@corsac.net>  Wed, 26 Jul 2006 17:49:20 +0100
+
+xfce4-screenshooter-plugin (1.0.0-1) unstable; urgency=low
+
+  * Initial release                                            closes: #365519
+
+ -- Yves-Alexis Perez <corsac@corsac.net>  Sat, 03 Jun 2006 15:44:02 +0200
