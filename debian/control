@@ -1,8 +1,7 @@
 Source: xfce4-screenshooter
 Section: xfce
 Priority: optional
-Maintainer: Debian Xfce Maintainers <pkg-xfce-devel@lists.alioth.debian.org>
-Uploaders: Yves-Alexis Perez <corsac@debian.org>, Lionel Le Folgoc <mrpouit@gmail.com>
+Maintainer: Filip Danilovic <filip@openmailbox.org>
 Build-Depends: debhelper (>= 9), autotools-dev, libxml-parser-perl,
  xfce4-panel-dev, libgtk2.0-dev, intltool, libcurl4-gnutls-dev,
  libsoup2.4-dev, libxfce4ui-1-dev, libexo-1-dev,
